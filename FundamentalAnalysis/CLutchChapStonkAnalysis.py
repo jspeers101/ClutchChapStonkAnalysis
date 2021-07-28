@@ -6,6 +6,7 @@ import yfinance as yf
 
 tickerList = ['MSFT', 'AAPL', 'GOOG']
 print(tickerList)
-tickerData = yf.download(tickerList, period="1d")
+tickerData = yf.Tickers(tickerList)
 print(tickerData)
+tickerData.info
 
