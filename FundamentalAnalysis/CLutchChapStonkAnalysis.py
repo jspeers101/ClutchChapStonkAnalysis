@@ -6,7 +6,8 @@ import yfinance as yf
 
 tickerList = ['MSFT', 'AAPL', 'GOOG']
 print(tickerList)
-tickerData = yf.Tickers(tickerList)
+tickerData = yf.Ticker(tickerList[1])
 print(tickerData)
-tickerData.info
+print(tickerData.info['revenuePerShare'])
+
 
