@@ -1,13 +1,17 @@
-
 import pandas as pd
 from pandasgui import show
 import FundamentalAnalysis as fa
 import yfinance as yf
 
-tickerList = ['MSFT', 'AAPL', 'GOOG']
-print(tickerList)
-tickerData = yf.Ticker(tickerList[1])
-print(tickerData)
-print(tickerData.info['revenuePerShare'])
+
+def stockratios(ticker):
+    # ratioDf = pd.DataFrame(columns=['peg', 'trailingpe', 'ebitda'])
+    ticker = yf.Ticker(ticker)
+    ratiodf = pd.DataFrame([ticker.info['pegRatio'], ticker.info['trailingPE'], ticker.info['ebitda']])
+    ratiodf = ratiodf.T
+    ratiodf.columns = ['PEG', 'PE (TTM)', 'EBITDA']
+    return ratiodf
 
 
+aapl = stockratios('AAPL')
+show(aapl)
